@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcverylargeobject
+spec:
+  selector:
+    matchLabels:
+      app: gcverylargeobject
+  template:
+    metadata:
+      labels:
+        app: gcverylargeobject
+    spec:
+      nodeSelector:
+        kubernetes.io/os: windows
+      containers:
+      - name: gcverylargeobject
+        image: banchioacrprem.azurecr.io/gcverylargeobject:latest
+        resources:
+          limits:
+            memory: "16Gi"
+            cpu: "500m"
+
